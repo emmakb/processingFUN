@@ -1,7 +1,7 @@
 #FINAL EXAM- BIOS14#
 #Part 1
 rm(list=ls())
-#Research question: What is the effect of the species type, treatment type and their interaction on ASD
+#Research question: What is the effect of the species type, treatment type and their interaction on GAD
 library(ggplot2)
 library(ggfortify)
 library(dplyr)
@@ -38,7 +38,7 @@ ggplot(sum_plant, aes(x=treat, y=mean_area, colour=sp, group=sp)) +
   theme_classic()
 
 #Part 2____________________________________________________________________
-#Research question: Is the variance in body mass most influenced by the length of the right or left horn?
+#Research question: Is the variance in right horn length most influenced by mass or age?
 #And is this true for both male and female mountain goats?
 #Step 1: Import the data
 goat_dat = read.table("exam2022_part2.txt", header=T) 
@@ -47,12 +47,6 @@ goat_data<-na.omit(goat_dat) #remove NA data
 #Step 2: Subset the data
 males<-goat_data[goat_data$sex=="M",]
 females<-goat_data[goat_data$sex=="F",]
-
-cor(males$hornL, males$hornR)
-#[1] 0.9909308
-cor(females$hornL, females$hornR)
-#[1] 0.9911645
-#****TOO MUCH COLLINEARITY- MUST COMPLETE THE ANALYSIS USING OTHER VARIABLES THAT ARE NOT AS STRONGLY CORRELATED TO ONE ANOTHER
 
 #Step 3: Create the models
 model_goat_males<-lm(hornR~mass+age, data=males)
