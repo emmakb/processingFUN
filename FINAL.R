@@ -70,7 +70,7 @@ var(y_hat1)
 #Totally variance of mass
 #[1] 527.0154
 var(y_hat1)/var(males$hornR)
-#Proportion of the variance in mass explained by mass
+#Proportion of the variance in length explained by mass
 #[1] 0.2786536
 
 y_hat2<-coefs1[1,1] + coefs1[2,1]*mean(males$mass) + coefs1[3,1]*males$age
@@ -78,7 +78,7 @@ var(y_hat2)
 #Totally variance of age
 #[1] 164.2233
 var(y_hat2)/var(males$hornR)
-#Proportion of the variance in mass explained by mass
+#Proportion of the variance in length explained by age
 #[1] 0.08683127
 
 #FEMALES
@@ -91,7 +91,7 @@ var(y_hat3)
 #Totally variance of mass
 #[1] 362.8308
 var(y_hat3)/var(females$hornR)
-#Proportion of the variance in mass explained by mass
+#Proportion of the variance in length explained by mass
 #[1] 0.2138179
 
 y_hat4<-coefs2[1,1] + coefs2[2,1]*mean(females$mass) + coefs2[3,1]*females$age
@@ -99,7 +99,7 @@ var(y_hat4)
 #Totally variance of age
 #[1] 320.4032
 var(y_hat4)/var(females$hornR)
-#Proportion of the variance in mass explained by mass
+#Proportion of the variance in length explained by age
 #[1] 0.1888152
 
 #Step 5: Check for collinearity
@@ -107,8 +107,9 @@ cor(males$mass, males$age)
 #[1] 0.602958
 cor(females$mass, females$age)
 #[1] 0.4948573
+#Collinearity is at an OK level
 
-#Step 6: Plot the meaningful regressions 
+#Step 6: Plot the meaningful regressions (mass and length)
 ggplot(data = males, aes(x=mass, y=hornR)) +
   geom_point() +
   geom_smooth(method="lm") +
